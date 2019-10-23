@@ -5,6 +5,8 @@ import sys
 
 
 def rearrange(word_list):
+    ''' Takes in a list of words, shuffles them, and then returns the word list '''
+
     random.shuffle(word_list)
     return word_list
 
