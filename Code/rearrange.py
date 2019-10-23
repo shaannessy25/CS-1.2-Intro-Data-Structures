@@ -3,12 +3,18 @@ import sys
 
 
 
+def rearrange(words_list):
+    """
+    rearranges given words from the user
+    """
+    for i, word in enumerate(words_list):
+        random_index = random.randint(0, len(words_list) - 1)
+        words_list[i] = words_list[random_index]
+        words_list[random_index] = word
 
-def rearrange(word_list):
-    ''' Takes in a list of words, shuffles them, and then returns the word list '''
-
-    random.shuffle(word_list)
-    return word_list
+    return words_list
+    # random.shuffle(word_list)
+    # return word_list
 
 
 
@@ -16,4 +22,4 @@ def rearrange(word_list):
 if __name__ == '__main__':
     word_list = sys.argv[1:]
     rearrange(word_list)
-    print(word_list)
+    print(' '.join(word_list))
