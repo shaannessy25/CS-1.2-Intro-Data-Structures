@@ -13,7 +13,7 @@ def book(source_text):
 
 
 def histogram(source_text):
-    '''Takes text argument and returns a histogram data structure '''
+    '''Takes text argument and returns a histogram data structure in a dictionary form'''
     histogram = {}
     words = book(source_text) 
     for word in words:
@@ -21,6 +21,7 @@ def histogram(source_text):
     return histogram
 
 def histogram_list(source_text):
+    '''Takes text argument and returns a histogram data structure in a list form'''
     words = book(source_text)
     histogram = []
 
@@ -33,6 +34,7 @@ def histogram_list(source_text):
     return histogram
 
 def histogram_tuples(source_text):
+    '''Takes text argument and returns a histogram data structure in a tuples form '''
     words = histogram_list(source_text)
     histogram = []
 
@@ -43,36 +45,27 @@ def histogram_tuples(source_text):
 
 
 
-def unique_words():
+def unique_words(source_text):
     '''Takes a histogram argument and returns the total count of unique words in the histogram '''
-    pass
+    histogram = {}
+
+    words = book(source_text)
+
+    for word in words:
+        if word in histogram:
+            histogram[word] = histogram[word] + 1
+        else: 
+            histogram[word] = 1
+    print(len(histogram))
 
 def frequency():
     '''Takes a word and histogram argument and returns the number of times t '''
     pass
 
 
-
-print(histogram_tuples(source_text))
+unique_words(source_text)
      
     
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# text = ['one', 'fish', 'two', 'red', 'fish', 'blue', 'fish']
