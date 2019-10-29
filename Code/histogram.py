@@ -23,7 +23,14 @@ def histogram(source_text):
 def histogram_list(source_text):
     words = book(source_text)
     histogram = []
-    pass
+
+    for word in words:
+        for item in histogram:
+            if item[0] == word:
+                item[1] += 1
+                break
+        else: histogram.append([word, 1])
+    return histogram
 
 
 
@@ -37,7 +44,7 @@ def frequency():
 
 
 
-print(histogram(source_text))
+print(histogram_list(source_text))
      
     
 
