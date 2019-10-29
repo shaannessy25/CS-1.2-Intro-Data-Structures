@@ -32,6 +32,15 @@ def histogram_list(source_text):
         else: histogram.append([word, 1])
     return histogram
 
+def histogram_tuples(source_text):
+    words = histogram_list(source_text)
+    histogram = []
+
+    for item in words:
+        histogram.append(tuple(item))
+
+    return histogram
+
 
 
 def unique_words():
@@ -44,7 +53,7 @@ def frequency():
 
 
 
-print(histogram_list(source_text))
+print(histogram_tuples(source_text))
      
     
 
