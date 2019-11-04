@@ -71,12 +71,12 @@ def frequency(search, source_text):
     print (histogram.get(search, 0))
 
 
+if __name__ == '__main__':
 
-source_text = 'book.txt'
+    source_text = 'book.txt'
 
-histogram(source_text)
-unique_words(source_text)
-frequency('and', source_text)
-
+    histogram(source_text)
+    unique_words(source_text)
+    frequency('and', source_text)
 
 
