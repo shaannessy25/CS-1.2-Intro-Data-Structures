@@ -1,15 +1,8 @@
 import random
 from histogram import *
 
-def get_count(histogram):
-    '''Counts and sums the values of histogram'''
-    count = 0
-    for key, value in histogram.items():
-        count += value
-    return count
-
 def prob_word(histogram, count):
-    ''' '''
+    '''returns a random word '''
     total = 0
     index = random.randint(1, count)
 
@@ -21,7 +14,7 @@ def prob_word(histogram, count):
 
 def main_sample(source_text):
     words = histogram(source_text)
-    count = get_count(words)
+    count = sum(words.values())
 
     word = prob_word(words, count)
     print (word)
