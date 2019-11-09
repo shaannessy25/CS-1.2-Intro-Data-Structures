@@ -12,7 +12,7 @@ def book(source_text):
     return scrubbed_words.split(" ")
 
 
-def histogram(source_text):
+def histogram_dict(source_text):
     '''Takes text argument and returns a histogram data structure in a dictionary form'''
     histogram = {}
     words = book(source_text) 
@@ -24,7 +24,6 @@ def histogram_list(source_text):
     '''Takes text argument and returns a histogram data structure in a list form'''
     words = book(source_text)
     histogram = []
-
     for word in words:
         for item in histogram:
             if item[0] == word:
@@ -75,7 +74,7 @@ if __name__ == '__main__':
 
     source_text = 'book.txt'
 
-    histogram(source_text)
+    histogram_dict(source_text)
     unique_words(source_text)
     frequency('and', source_text)
 
