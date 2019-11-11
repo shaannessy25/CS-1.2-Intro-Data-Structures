@@ -1,8 +1,8 @@
-  
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-       <!-- Required meta tags -->
+
+<head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -10,9 +10,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <title>Tweet-Generator</title>
-    </head>
-    <body>
-        <h1>hello</h1>
-    {% block content %}
-    {% endblock %}
-    </body>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!--Generates Tweet-->
+            <div class="col-12 col-sm-6 col-md-8 ">
+                <div class="row h100">
+                    <div class="col-12">
+                        <h1>Tweet Generator</h1>
+                        <hr />
+                        <h3>{{ sentence }}</h3>
+                        <form action="/">
+                            <button type="submit" class="btn btn-light">
+                                Generate!
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

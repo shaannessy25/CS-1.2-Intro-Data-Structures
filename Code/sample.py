@@ -1,5 +1,5 @@
 import random
-from histogram import *
+from histogram import histogram_dict
 
 def prob_word(histogram, count):
     '''returns a random word '''
@@ -13,13 +13,14 @@ def prob_word(histogram, count):
             return key
 
 def main_sample(source_text):
-    words = histogram(source_text)
+    words = histogram_dict(source_text)
     count = sum(words.values())
 
     word = prob_word(words, count)
-    print (word)
+    return word
 
 if __name__ == '__main__':
     source_text = 'book.txt'
-    main_sample(source_text)
+    histogram = histogram_dict(source_text)
+    print(prob_word(histogram, 21))
     

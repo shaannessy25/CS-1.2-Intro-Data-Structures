@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from sample import prob_word
+from sample import main_sample
 from histogram import histogram_dict
 
 app = Flask(__name__)
@@ -8,16 +8,15 @@ app = Flask(__name__)
 def index():
     """Return Homepage"""
     text = 'book.txt'
-    histogram = histogram_dict(text)
-    sentence = prob_word(histogram, 15)
+    sentence = main_sample(text)
     return render_template('base.html', sentence=sentence)
 
+ 
 
 
 
 
-
-
+# histogram = histogram_dict(text)
 
 
 
