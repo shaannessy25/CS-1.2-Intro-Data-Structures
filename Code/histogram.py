@@ -24,7 +24,7 @@ def histogram_list(source_text):
     '''Takes text argument and returns a histogram data structure in a list form'''
     words = book(source_text)
     histogram = []
-    for word in words:
+    for word in words
         for item in histogram:
             if item[0] == word:
                 item[1] += 1

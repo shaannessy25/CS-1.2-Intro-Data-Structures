@@ -15,9 +15,19 @@ tweet = db['tweet']
 @app.route('/')
 def index():
     """Return Homepage"""
-    text = 'book.txt'
-    sentence = main_sample(text)
-    return render_template('base.html', sentence=sentence)
+    source_text = 'book.txt'
+    tweet_list = {
+        'tweet' : main_sample(source_text)
+    }
+
+    tweet_id = tweet.insert.one(tweet_list).inserted_id
+    tweet_text = tweet.find.one({'_id': ObjectId(tweet_id)})['tweet']
+    return render_template('base.html', tweet_id=tweet_id, tweet_text=tweet_text)
+
+
+    # text = 'book.txt'
+    # sentence = main_sample(text)
+    # return render_template('base.html', sentence=sentence)
 
 
 
