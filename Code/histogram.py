@@ -2,7 +2,6 @@ import sys
 import re
 
 
-
 def book(source_text):
     '''Opens text file and arranges words into a readable list '''    
     #Opens text file
@@ -55,7 +54,7 @@ def unique_words(source_text):
             histogram[word] = histogram[word] + 1
         else: 
             histogram[word] = 1
-    print(len(histogram))
+    return len(histogram)
 
 def frequency(search, source_text):
     '''Takes a word and histogram argument and returns the number of times t '''
@@ -67,7 +66,7 @@ def frequency(search, source_text):
             histogram[word] = histogram[word] + 1
         else: 
             histogram[word] = 1
-    print (histogram.get(search, 0))
+    return histogram.get(search, 0)
 
 
 if __name__ == '__main__':
