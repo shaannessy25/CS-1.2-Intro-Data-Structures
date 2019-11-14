@@ -17,12 +17,12 @@ class LinkedList(object):
 
     def __init__(self, items=None):
         """Initialize this linked list and append the given items, if any."""
-        self.head = None  # First node
+        self.head = node()  # First node
         self.tail = None  # Last node
         # Append given items
-        if items is not None:
+        if items is not None:   
             for item in items:
-                self.append(item)
+                self.append(item)           #
 
     def __str__(self):
         """Return a formatted string representation of this linked list."""
@@ -56,12 +56,24 @@ class LinkedList(object):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes and count one for each
+        cur = self.head
+        total = 0
+        while cur.next!=None:
+            total += 1
+            cur = cur.next
+        return total
 
     def append(self, item):
-        """Insert the given item at the tail of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        """This method will create the first element of the list"""
         # TODO: Create new node to hold given item
         # TODO: Append node after tail, if it exists
+        new_node = node(item)
+        cur = self.head
+        while cur.next!=None:
+            cur = cur.next
+        cur.next = new_node 
+
+
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.

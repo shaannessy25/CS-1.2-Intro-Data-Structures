@@ -1,7 +1,5 @@
-#!python
-
 from __future__ import division, print_function  # Python 2 and 3 compatibility
-import random
+from random import randint
 
 
 class Listogram(list):
@@ -10,9 +8,11 @@ class Listogram(list):
     def __init__(self, word_list=None):
         """Initialize this histogram as a new list and count given words."""
         super(Listogram, self).__init__()  # Initialize this as a new list
+
         # Add properties to track useful word counts for this histogram
         self.types = 0  # Count of distinct word types in this histogram
         self.tokens = 0  # Total count of all word tokens in this histogram
+
         # Count words in given list, if any
         if word_list is not None:
             for word in word_list:
@@ -20,7 +20,6 @@ class Listogram(list):
 
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
-        # TODO: Increase word frequency by count
         self.tokens += count
         for index, item in enumerate(self):
             if item[0] == word:
@@ -32,51 +31,36 @@ class Listogram(list):
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
-        # TODO: Retrieve word frequency count
-        for index, item in enumerate(self):
-            if item[0] == word:
-                return item[1]
-
-            else:
-                return 0
+        for word_tup in self:
+            if word_tup[0] == word:
+                return word_tup[1]
+        return 0
 
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
-        # TODO: Check if word is in this histogram
-        for index, item in enumerate(self):
-            if item[0] == word:
+        for word_tup in self:
+            if word_tup[0] == word:
                 return True
-        else:
-            return False
+        return False
 
-    def index_of(self, target):
+    def _index(self, target):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
-        # TODO: Implement linear search to find index of entry with target word
-        for index, item in enumerate(self):
-            if item[0] == target:
-                return index
-            else:
-                return None
+        for word_tup in self:
+            if word_tup[0] == target:
+                return self.index(word_tup)
+        return None
 
     def sample(self):
-        """Return a word from this histogram, randomly sampled by weighting
-        each word's probability of being chosen by its observed frequency."""
-        # TODO: Randomly choose a word based on its frequency in this histogram
-        random_value = random.randrange(0, self.tokens)
+        count = randint(1, self.tokens)
+        for word in self:
+            count -= word[1]
+            if count <= 0:
+                return word[0]
+        return -1
 
-        position = 0
-
-        for index, item in enumerate(self):
-
-            position += item[1]
-
-            if position > random_value:
-                return item[0]
 
 def print_histogram(word_list):
-    print()
-    print('Histogram:')
     print('word list: {}'.format(word_list))
     # Create a listogram and display its contents
     histogram = Listogram(word_list)
@@ -116,11 +100,12 @@ def print_histogram_samples(histogram):
         sampled_freq = samples / samples_hist.tokens
         # Calculate error between word's sampled and observed frequency
         error = (sampled_freq - observed_freq) / observed_freq
-        color = green if abs(error) < 0.05 else yellow if abs(error) < 0.1 else red
+        color = green if abs(error) < 0.05 else yellow if abs(error) < 0.1\
+            else red
         print('| {!r:<9} '.format(word)
-            + '| {:>4} = {:>6.2%} '.format(count, observed_freq)
-            + '| {:>4} = {:>6.2%} '.format(samples, sampled_freq)
-            + '| {}{:>+7.2%}{} |'.format(color, error, reset))
+              + '| {:>4} = {:>6.2%} '.format(count, observed_freq)
+              + '| {:>4} = {:>6.2%} '.format(samples, sampled_freq)
+              + '| {}{:>+7.2%}{} |'.format(color, error, reset))
     print(divider)
     print()
 
@@ -146,3 +131,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
