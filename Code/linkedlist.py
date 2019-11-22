@@ -49,7 +49,7 @@ class LinkedList(object):
         return items  # O(1) time to return list
 
     def is_empty(self):
-        """Return a boolean indicating whether this linked list is empty.
+        """Return a boolean indicating whether this linked list is empty or not.
         This runs at 0(1) in both best and worst case scenarios"""
         return self.head is None 
 
@@ -65,7 +65,7 @@ class LinkedList(object):
 
     def append(self, item):
         """This method will create the first element of the list.
-        The best case scenario will run at 0(1)   """
+        The best case scenario will run at 0(1) and the worst case scenario will run at 0(n)   """
         new_node = Node(item)
         if self.tail is not None:
             self.tail.next = new_node
@@ -77,7 +77,8 @@ class LinkedList(object):
 
 
     def prepend(self, item):
-        """Insert the given item at the head of this linked list. """
+        """Insert the given item at the head of this linked list. 
+        The best case scenario will run at 0(1) while the worst case scenario 0(n)"""
         new_node = Node(item)
 
         if self.head is not None:
@@ -87,7 +88,8 @@ class LinkedList(object):
         self.head = new_node
 
     def find(self, quality):
-        """Return an item from this linked list satisfying the given qualit"""
+        """Return an item from this linked list satisfying the given.
+        Best case runs at 0(1) and worst case runs at 0(n)"""
         
         node = self.head
 
@@ -101,7 +103,8 @@ class LinkedList(object):
   
 
     def delete(self, item):
-        """Delete the given item from this linked list, or raise ValueError"""
+        """Delete the given item from this linked list, or raise ValueError
+        Best and worse case scenario runs at 0(n)"""
         current_node = self.head
         prev_node = None
 
