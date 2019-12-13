@@ -71,7 +71,7 @@ def frequency(search, source_text):
 
 if __name__ == '__main__':
 
-    source_text = 'book.txt'
+    source_text = 'lyrics.txt'
 
     histogram_dict(source_text)
     unique_words(source_text)

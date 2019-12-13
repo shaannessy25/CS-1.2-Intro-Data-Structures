@@ -67,7 +67,7 @@ class HashTable(object):
         """Return True if this hash table contains the given key, or False.
         Running time: O(N) Worst Case last item in the traversed bucket
         Best Case one item in bucket O(1)"""
-        bucket = self.buckets[hash(key) % len(self.buckets)]    #sets a bucket with a specified key
+        bucket = self.buckets[hash(dkey) % len(self.buckets)]    #sets a bucket with a specified key
         for item_key, value in bucket.items():      #loops through items in bucket
             if item_key == key:     # if the specified key matches then return true else return false
                 return True
